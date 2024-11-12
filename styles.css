@@ -1,0 +1,161 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+    margin:0; padding: 0;
+    box-sizing: border-box;
+    outline:none;border:none;
+    text-decoration: none;
+}
+
+
+body{
+    background: #1A1A1D;
+}
+
+.header{
+    background-color: #1A1A1D;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 1.5 rem 7%;
+    position: fixed;
+    top:15px; left: 0; right: 0;
+    z-index: 1000;
+}
+.logo{
+    color: #FFF7D4;
+    margin: 0.1rem;
+    font-size: 1.6rem;
+    margin-left: 20px;
+}
+.header .navbar a{
+    margin: 0.1rem;
+    font-size: 1rem;
+    color: #FFF7D4;
+}
+
+.navbar a:hover {
+    color: #FFD95A;
+}
+.side {
+    margin-right: 20px;
+}
+
+.side a {
+    margin: 20px;
+    color: #FFF7D4;
+    font-size: 1rem;
+    margin: 0.1rem;
+}
+.side a:hover {
+    color: #FFD95A;
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    color: #FFF7D4;
+}
+
+.section {
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section h2 {
+    color: #ECF4D6;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+.section p {
+    color: #F5D061;
+    margin-bottom: 1rem;
+}
+
+
+.content {
+    margin-top: 5rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #F5D061;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content h2 {
+    color: #ECF4D6;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.content p {
+    margin-bottom: 1.5rem;
+}
+
+ul {
+    list-style-type: disc;
+    color: #F5D061;
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: #FFF7D4;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #C07F00 ;
+}
+
+th {
+    background-color: #1A1A1D;
+    color: #F5D061;
+}
+
+tr:hover {
+    background-color: #333;
+}
+
+
+
+.footer {
+    background-color: #1A1A1D;
+    color: #FFF7D4;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-links a {
+    color: #F5D061;
+    margin: 0 10px;
+    font-size: 0.5;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #FFD95A;
+}
+
