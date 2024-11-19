@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>First_js</title>
+</head>
+<body>
+    <nav>
+        <div class="logo"> <a href="#">Logo</a></div>
+        <div class="nav">
+            <div class="dropdown">
+                <a href="#">TOOLS</a>
+                <ul class="drop_items">
+                    <li><a href="#">Quote</a></li>
+                    <li><a href="#">Converter</a></li>
+                    <li><a href="#">Calculate</a></li>
+                    
+                </ul>
+            </div>
+            <div class="more">
+                <a href="about">ABOUT</a>
+            </div>
+        </div>   
+    </nav>
+    <div class="front">
+        <div class="content">
+            <h1>Hello</h1>
+            <p>
+                Lorem ipsum dolor, 
+                sit amet consectetur adipisicing elit.<br> 
+                Ab vitae at eum, odio modi<br> culpa quos eius 
+                est. Itaque quia quod harum tempora? <br>
+                Sed rerum omnis ullam eos nemo nulla.
+            </p>
+        </div>
+        <img src="converter"></img>
+    </div>
+    <section id= "converter" class="section">
+        <h1>CONVERTER</h1>
+        <div class="box">
+            <form name="conv">
+                <label for="val">Enter the Weight:</label>  
+                <input type="text" id="val" placeholder="e.g 10"> 
+                <select id="choice">
+                    <option value="ktl">Kg to lb</option>
+                    <option value="ltk">lb to Kg</option>
+                </select>
+                <button type="button" onclick="convert(event)">GO</button>
+                <span id="result"></span>
+            </form>
+        </div>
+    </section>
+    <section id= "quote" class="section">
+        <h1>QUOTE</h1>
+        <div class="box2">
+            <p id = "qu">Fortune and love favor the brave.</p>
+        </div>
+        <div class="clr_button">
+            <button onclick="color(r)">RED</button>
+            <button onclick="color(b)">Blue</button>
+            <button onclick="color(g)">Green</button>
+            <button onclick="color(p)">Pink</button>
+        </div>
+    </section>
+
+
+    <div class="footer">
+        <h3>Contact Information</h3>
+        <div class="footer-links">
+            <a href="mailto:samira.akter1@e.bracu.ac.bd">Email</a>
+            <a href="https://www.linkedin.com/in/sameera-shifa-b73696215/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/sssamira" target="_blank">GitHub</a>
+            <a href="https://www.bracu.ac.bd" target="_blank">BRACU</a>
+            <a href="https://github.com/sssamira" target="_blank">CSE391</a>
+        </div>
+        <div id="page-info"></div>
+        <script>
+            document.getElementById("page-info").innerHTML = `
+              <p>Page URL: <a href="${window.location.href}" target="_blank">${window.location.href}</a></p>
+              <p>Last Modified: ${document.lastModified}</p>
+            `;
+        </script>
+    </div>
+</body>
+</html>
