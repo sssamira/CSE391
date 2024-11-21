@@ -71,7 +71,21 @@ function qt(){
 window.onload = qt;
 
 
-function color(x){
-    const clr_button = document.querySelector(".quote-box");
-    clr_button.style.borderColor = color;
+function colors(x){
+    const colors = {
+        p: { bg: "#FF9BD2", border: "#D63484", text: "#402B3A", f: "15px", ff:"Trebuchet MS"}, 
+        b: { bg: "#068FFF", border: "#4E4FEB", text: "#000000", f:"17px", ff:"Arial"}, 
+        o: { bg: "#F05941", border: "#872341", text: "#22092C", f: "20px", ff:"Lucida Grande"}, 
+        pu: { bg: "#C147E9", border: "#810CA8", text: "#2D033B", f: "22px", ff:"sans-serif"} 
+    };
+    const clr = colors[x];
+    const box2 = document.querySelector(".box2");
+    const text = document.querySelector("#qu");
+
+    box2.style.backgroundColor = clr.bg;
+    box2.style.borderColor = clr.border;
+    box2.style.fontSize = clr.f;
+    box2.style.fontSize = clr.ff;
+    text.style.color = clr.text;
+
 }

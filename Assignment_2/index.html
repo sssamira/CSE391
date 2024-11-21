@@ -14,14 +14,14 @@
             <div class="dropdown">
                 <a href="#">TOOLS</a>
                 <ul class="drop_items">
-                    <li><a href="#">Quote</a></li>
-                    <li><a href="#">Converter</a></li>
-                    <li><a href="#">Calculate</a></li>
+                    <li><a href="#quote">Quote</a></li>
+                    <li><a href="#converter">Converter</a></li>
+                    <li><a href="calculate.html">Calculate</a></li>
                     
                 </ul>
             </div>
             <div class="more">
-                <a href="about">ABOUT</a>
+                <a href="https://github.com/sssamira/CSE391/tree/main/Assignment_2">SOURCE</a>
             </div>
         </div>   
     </nav>
@@ -29,14 +29,13 @@
         <div class="content">
             <h1>Hello</h1>
             <p>
-                Lorem ipsum dolor, 
-                sit amet consectetur adipisicing elit.<br> 
-                Ab vitae at eum, odio modi<br> culpa quos eius 
-                est. Itaque quia quod harum tempora? <br>
-                Sed rerum omnis ullam eos nemo nulla.
+                Welcome to <br><span style="font-size: 30px;">Samira</span>'s 
+                digital kitchen—<br>where coding is made of half-baked algorithms, 
+                creativity is sprinkled on top,<br> and deadlines? Relax...the project’s 
+                still cooking.
             </p>
         </div>
-        <img src="converter"></img>
+        <img src="img/home_pic.png"></img>
     </div>
     <section id= "converter" class="section">
         <h1>CONVERTER</h1>
@@ -44,25 +43,25 @@
             <form name="conv">
                 <label for="val">Enter the Weight:</label>  
                 <input type="text" id="val" placeholder="e.g 10"> 
-                <select id="choice">
+                <select class="choice" id="choice">
                     <option value="ktl">Kg to lb</option>
                     <option value="ltk">lb to Kg</option>
                 </select>
-                <button type="button" onclick="convert(event)">GO</button>
+                <button class="go" type="button" onclick="convert(event)">GO</button>
                 <span id="result"></span>
             </form>
         </div>
     </section>
     <section id= "quote" class="section">
         <h1>QUOTE</h1>
-        <div class="box2">
+        <div class="box2" id="box2">
             <p id = "qu">Fortune and love favor the brave.</p>
         </div>
         <div class="clr_button">
-            <button onclick="color(r)">RED</button>
-            <button onclick="color(b)">Blue</button>
-            <button onclick="color(g)">Green</button>
-            <button onclick="color(p)">Pink</button>
+            <button class = "pink" onclick="colors('p')"></button>
+            <button class = "blue" onclick="colors('b')"></button>
+            <button class = "orange" onclick="colors('o')"></button>
+            <button class = "purple" onclick="colors('pu')"></button>
         </div>
     </section>
 
