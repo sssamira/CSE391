@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystics's Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <a class="logo" href="#">LOGO</a>
+        <nav class = "navbar">
+            <a href="index.html">HOME</a>
+            <a href="index.html#about">ABOUT</a>
+            <a href="index.html#academic">ACADEMIC</a>
+            <a href="index.html#projects">PROJECTS</a>
+            <a href="favor.html">FAVORITES</a>
+        </nav>
+        <div class="side">
+            <a href="https://github.com/sssamira/CSE391" target="_blank" style="font-size: 20px;">SOURCE</a>
+        </div>
+    </div>
+
+
+    <section class="content">
+        <h2>My Favorite</h2>
+        <ul>
+            <li>Iron Man</li>
+            <li>Mission Impossible</li>
+            <li>Kungfu Panda</li>
+            <li>Big hero 6</li>
+            <li>How to train your dragon</li>
+        </ul>
+        
+    </section>
+
+
+    <section class="content">
+        <h2>Favorite Songs</h2>
+        <p>TOP FIVE</p>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=5gg17XXXiNo" target="_blank">Dandalion, Ruth B</a></li>
+            <li><a href= "https://www.youtube.com/watch?v=fuP4Lkt1vAo"  target="_blank">Payphone, Maroon 5 Ft. Wiz Khalifa</a></li>
+            <li><a href="https://www.youtube.com/watch?v=4h0a1NCeC14"  target="_blank">Espresso, Sabrina Carpenter</a></li>
+            <li><a href="https://www.youtube.com/watch?v=5EBALIhQ0Tg" target="_blank">Die Young, Kesha</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HaxRY9I1l7E" target="_blank">Slumber Party, Ashnikko</a></li>
+        </ul>
+    </section>
+    
+
+    <section class="content">
+        <h2>Favorite Series</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Series NAME</th>
+                    <th>Release Year</th>
+                    <th>Genre</th>
+                    <th>Favorite Character</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Person of Interest</td>
+                    <td>2011</td>
+                    <td>Detective Fiction</td>
+                    <td>John Reese</td>
+                </tr>
+                <tr>
+                    <td>Game of Thrones</td>
+                    <td>2011</td>
+                    <td>Fantasy</td>
+                    <td>Tyrion Lannister</td>
+                </tr>
+                <tr>
+                    <td>How I Met Your Mother</td>
+                    <td>2005</td>
+                    <td>Sitcom</td>
+                    <td>Ted Mosby</td>
+                </tr>
+                <tr>
+                    <td>The Big Bang Theory</td>
+                    <td>2007</td>
+                    <td>Sitcom</td>
+                    <td>Sheldon Cooper</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="content">
+        <h2>Favorite Quotes</h2>
+        <!-- <h3>1.</h3> -->
+        <p style="margin-bottom: 3rem;">
+            "If you can hear this, you’re alone.
+            The only thing left of me is the sound of my voice.<br>
+            I don’t know if any of us made it. Did we win? Did we lose? 
+            I don’t know. But either way, it’s over. So let me tell you who we were.<br>
+            Let me tell you who you are. - Person Of Interest"
+       </p>
+    </section>
+
+
+    <div class="footer">
+        <h3>Contact Information</h3>
+        <div class="footer-links">
+            <a href="mailto:samira.akter1@e.bracu.ac.bd">Email</a>
+            <a href="https://www.linkedin.com/in/sameera-shifa-b73696215/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/sssamira" target="_blank">GitHub</a>
+            <a href="https://www.bracu.ac.bd" target="_blank">BRACU</a>
+            <a href="https://discord.com/channels/1297792396800819201/1297792397853462553" target="_blank">CSE391</a>
+        </div>
+        <div id="page-info"></div>
+        <script>
+            document.getElementById("page-info").innerHTML = `
+              <p>Page URL: <a href="${window.location.href}" target="_blank">${window.location.href}</a></p>
+              <p>Last Modified: ${document.lastModified}</p>
+            `;
+        </script>
+    </div>
+
+</body>
+</html>
