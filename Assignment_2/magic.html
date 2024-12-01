@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>First_js</title>
+</head>
+<body>
+    <nav>
+        <div class="logo"> <a href="#">Logo</a></div>
+        <div class="nav">
+            <div class="dropdown">
+                <a href="#">TOOLS</a>
+                <ul class="drop_items">
+                    <li><a href="index.html#quote">Quote</a></li>
+                    <li><a href="index.html#converter">Converter</a></li>
+                    <li><a href="calculate.html">Calculate</a></li>  
+                    <li><a href="magic.html">Magic</a></li> 
+                </ul>
+            </div>
+            <div class="more">
+                <a href="https://github.com/sssamira/CSE391/tree/main/Assignment_2">SOURCE</a>
+            </div>
+        </div>   
+    </nav>
+    
+    <div class="v">
+        <div class="cl1">
+
+        </div>
+        <div class="magic_box">
+            <h1>MAGIC!</h1>
+            <form id="messege" action="submit">
+            <label>Type Your messege here!</label>
+            <textarea type="text" class = "txt_box" placeholder="e.g. Hello..."></textarea>
+            </form>
+            <div class="buttons">
+                <button class="a" onclick="f()">Clear All</button>
+                <button class="b" onclick="f()">Capitalize</button>
+                <button class="c" onclick="f()">Sort</button>
+                <button class="" onclick="f()">Reverse</button>
+                <button class="a" onclick="f()">Strip Blank</button>
+            </div>
+        </div>
+        <div class="cl2">
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3>Contact Information</h3>
+        <div class="footer-links">
+            <a href="mailto:samira.akter1@e.bracu.ac.bd">Email</a>
+            <a href="https://www.linkedin.com/in/sameera-shifa-b73696215/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/sssamira" target="_blank">GitHub</a>
+            <a href="https://www.bracu.ac.bd" target="_blank">BRACU</a>
+            <a href="https://github.com/sssamira" target="_blank">CSE391</a>
+        </div>
+        <div id="page-info"></div>
+        <script>
+            document.getElementById("page-info").innerHTML = `
+              <p>Page URL: <a href="${window.location.href}" target="_blank">${window.location.href}</a></p>
+              <p>Last Modified: ${document.lastModified}</p>
+            `;
+        </script>
+    </div>
+</body>
+</html>
