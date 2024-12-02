@@ -69,7 +69,6 @@ font-size: 1rem;
 padding: 10px;
 display: block;
 text-decoration: none;
-
 }
   
 .drop_items li a:hover {
@@ -103,17 +102,18 @@ display: block;
 .converter{
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 h1{
     margin-bottom: 2rem;
 }
 .box{
-    color: #ecdea0;
+    color: #FFF7D4;
     background-color: #575757;
 }
 .choice{
     color: #000000;
-    background-color: #ecdea0;
+    background-color: #FFF7D4;
     padding: 0.5rem;
     border: none;
     border-radius: 10%;
@@ -123,29 +123,36 @@ h1{
 } */
 .go{
     color: #000000;
-    background-color: #ecdea0;
+    background-color: #FFF7D4;
 }
 
 .box2{
     background-color: #575757;
     background-color: 0.5;
-    color: #F5D061;
-    border: 4px solid #ecdea0;
+    color: #FFF7D4;
+    border: 4px solid #FFF7D4;
     font-size: 15px;
-
+    padding: 5px;
+}
+.box3{
+    background-color: #1d1f9b;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
 button {
     border: none;
-    color: white; /* Text color */
     padding: 10px 20px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
 button:hover{
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .pink{
     background-color: #D63484;
@@ -171,7 +178,7 @@ button:hover{
     padding: 5rem;
 }
 .home h2{
-     color: yellow;
+     color:#F5D061;
      padding: 1rem;
 }
 .cal{
@@ -198,12 +205,12 @@ input {
     align-items: center;
     min-height: 80vh;
     background-color: #000000;
+    padding-bottom: 10rem;
 }
 .magic_box{
     color: #000000;
-    background-color: #ecdea0;
-    opacity: 0.7;
-    min-height: 40rem;
+    background-color: #FFF7D4;
+    min-height: 30vh;
     min-width:40rem;
     padding: 1rem;
     margin-bottom: 20px;
@@ -223,12 +230,11 @@ input {
     overflow-y: auto;   
     font-size: 16px;
     background-color: #000000;
-    color:#068FFF;
-    /* white-space: pre-wrap;  */
+    color:#FFF7D4;
 }
 
 .buttons button{
-    color:#ecdea0;
+    color:#FFF7D4;
     background-color:#000000 ;
 }
 
@@ -241,7 +247,7 @@ input {
     position: fixed;
     bottom: 0;
     width: 100%;
-    border: #ECF4D6;
+    border: #FFF7D4;
 }
 
 .footer h3 {
@@ -257,11 +263,11 @@ input {
 }
 
 .footer-links a:hover {
-    color: #fdf6dc;
+    color: #FFF7D4;
 }
 .footer p{
     font-size: 12px; 
-    color: #666;
+    color: #5e5e5e;
     text-align: center;
     margin-top: 10px;
 }

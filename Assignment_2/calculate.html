@@ -14,9 +14,10 @@
             <div class="dropdown">
                 <a href="#">TOOLS</a>
                 <ul class="drop_items">
-                    <li><a href="index.html#quote">Quote</a></li>
+                    <li><a href="quote.html #quote">Quote</a></li>
                     <li><a href="index.html#converter">Converter</a></li>
-                    <li><a href="calculate.html">Calculate</a></li>  
+                    <li><a href="calculate.html">Calculate</a></li> 
+                    <li><a href="magic.html">Magic</a></li> 
                 </ul>
             </div>
             <div class="more">
@@ -24,22 +25,24 @@
             </div>
         </div>   
     </nav>
-    <div class="home">
-        <h2>CALCULATOR</h2>
-        <form name="cal">
-            <label for="numbers">Enter Numbers: </label><br>
-            <input type="text" name="numbers" placeholder="e.g 1, 2, 3" onkeypress="calculate()">
-        </form>
-        <div class="results">
-            <h2>Results</h2>
-            <p id="max">Max: </p>
-            <p id="min">Min: </p>
-            <p id="sum">Sum: </p>
-            <p id="avg">Avarage: </p>
-            <p id="rev">Reverse Order: </p>
+    <div class="boxx">
+        <div class="home">
+            <h2>CALCULATOR</h2>
+            <form name="cal">
+                <label for="numbers" style="color: black;">Enter Numbers: </label><br>
+                <input type="text" name="numbers" placeholder="e.g 1, 2, 3" oninput="calculate()">
+            </form>
+            <div class="results">
+                <h2>Results</h2>
+                <p id="max">Max: </p>
+                <p id="min">Min: </p>
+                <p id="sum">Sum: </p>
+                <p id="avg">Avarage: </p>
+                <p id="rev">Reverse Order: </p>
+            </div>
         </div>
+    
     </div>
-
 
     <div class="footer">
         <h3>Contact Information</h3>

@@ -1,14 +1,20 @@
 function calculate(){
-    var inp = document.cal.numbers.value;
-    var x = inp.split(",").map(function(item)
-    {
-        return parseFloat(item.trim());
-    });
+    const inp = document.cal.numbers.value;
+    const y = inp.split(",");
+    const x = [];
+    var s = 0;
+    console.log(y)
+    for(var i=0; i<y.length; i++){
+        var k = parseFloat(y[i].trim());
+        x.push(k);
+        s=s+k;
+        }
+
     if (x.length!=0){
         var max = maxi(x);
         var min = mini(x);
-        var su = sum(x);
-        var av = avg(x);
+        var su = sum(s);
+        var av = avg(x,s);
         var re = rev(x);
     }
     document.getElementById("max").textContent = "Max: " + max;
@@ -25,11 +31,10 @@ function mini(a){
     return Math.min(...a);
 }
 function sum(a){
-    return a.reduce((acc, num) => acc + num, 0);
+    return a;
 }
-function avg(a){
-    let s = sum(a);
-    return s/a.length
+function avg(a,k){
+    return k/a.length
 }
 function rev(a){
     return a.slice().reverse();
@@ -89,3 +94,5 @@ function colors(x){
     text.style.color = clr.text;
 
 }
+
+

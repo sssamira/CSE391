@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="magic.js"></script>
+    <script src="script.js"></script>
     <title>First_js</title>
 </head>
 <body>
@@ -15,9 +15,11 @@
                 <a href="#">TOOLS</a>
                 <ul class="drop_items">
                     <li><a href="quote.html #quote">Quote</a></li>
-                    <li><a href="index.html#converter">Converter</a></li>
-                    <li><a href="calculate.html">Calculate</a></li>  
-                    <li><a href="magic.html">Magic</a></li> 
+                    <li><a href="index.html #converter">Converter</a></li>
+                    <li><a href="calculate.html">Calculate</a></li>
+                    <li><a href="magic.html">Magic</a></li>
+                    
+                    
                 </ul>
             </div>
             <div class="more">
@@ -25,31 +27,33 @@
             </div>
         </div>   
     </nav>
-    
-    <div class="v">
-        <div class="cl1">
-
+    <div class="front">
+        <div class="content">
+            <h1>Hello</h1>
+            <p>
+                Welcome to <br><span style="font-size: 30px;">Samira</span>'s 
+                digital kitchen—<br>where coding is made of half-baked algorithms, 
+                creativity is sprinkled on top,<br> and deadlines? Relax...the project’s 
+                still cooking.
+            </p>
         </div>
-        <div class="magic_box">
-            <h1>MAGIC!</h1>
-            <form id="messege" action="submit">
-            <label>Type Your messege here!</label>
-            <textarea type="text" class = "txt_box" placeholder="e.g. Hello..."></textarea>
-            </form>
-            <div class="buttons">
-                <button class="a" onclick="clearall()">Clear It</button>
-                <button class="b" onclick="capi()">Capitalize</button>
-                <button class="c" onclick="sortt()">Sort</button>
-                <button class="d" onclick="rev()">Reverse</button>
-                <button class="e" onclick="stripblank()">Strip Blank</button>
-                <button class="f" onclick="addnum()">Add Number</button>
-                <button class="g" onclick="shuff()">Shuffle</button>
+        <img src="img/home_pic.png"></img>
+    </div>
+    <section id= "quote" class="section">
+        <h1>QUOTE</h1>
+        <div class="box3">
+            <div class="box2" id="box2">
+                <p id = "qu">Fortune and love favor the brave.</p>
+            </div>
+            <div class="clr_button">
+                <button class = "pink" onclick="colors('p')"></button>
+                <button class = "blue" onclick="colors('b')"></button>
+                <button class = "orange" onclick="colors('o')"></button>
+                <button class = "purple" onclick="colors('pu')"></button>
             </div>
         </div>
-        <div class="cl2">
-            
-        </div>
-    </div>
+    </section>
+
 
     <div class="footer">
         <h3>Contact Information</h3>
