@@ -170,7 +170,7 @@ button:hover{
 
 .home{
     color: #FFF7D4;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

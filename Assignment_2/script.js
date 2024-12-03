@@ -2,21 +2,27 @@ function calculate(){
     const inp = document.cal.numbers.value;
     const y = inp.split(",");
     const x = [];
+    const z = [];
     var s = 0;
-    console.log(y)
-    for(var i=0; i<y.length; i++){
-        var k = parseFloat(y[i].trim());
-        x.push(k);
-        s=s+k;
-        }
+    console.log(z);
+    for(const i of y){
+        var k = parseFloat(i.trim());
+        if(!isNaN(k)){
+            x.push(k);
+            s=s+k;}
+        
+        z.push(i); 
+    }
 
     if (x.length!=0){
         var max = maxi(x);
         var min = mini(x);
         var su = sum(s);
         var av = avg(x,s);
-        var re = rev(x);
+        
     }
+    var re = rev(z);
+    
     document.getElementById("max").textContent = "Max: " + max;
     document.getElementById("min").textContent = "Min: " + min;
     document.getElementById("sum").textContent = "Sum: " + su;
@@ -37,7 +43,7 @@ function avg(a,k){
     return k/a.length
 }
 function rev(a){
-    return a.slice().reverse();
+    return a.reverse();
 }
 
 function convert(){
@@ -79,9 +85,9 @@ window.onload = qt;
 function colors(x){
     const colors = {
         p: { bg: "#FF9BD2", border: "#D63484", text: "#402B3A", f: "15px", ff:"Trebuchet MS"}, 
-        b: { bg: "#068FFF", border: "#4E4FEB", text: "#000000", f:"17px", ff:"Arial"}, 
-        o: { bg: "#F05941", border: "#872341", text: "#22092C", f: "20px", ff:"Lucida Grande"}, 
-        pu: { bg: "#C147E9", border: "#810CA8", text: "#2D033B", f: "22px", ff:"sans-serif"} 
+        b: { bg: "#068FFF", border: "#000000", text: "#000000", f:"17px", ff:"Arial"}, 
+        o: { bg: "#F05941", border: "#441752", text: "#22092C", f: "20px", ff:"Lucida Grande"}, 
+        pu: { bg: "#C147E9", border: "#3D0301", text: "#1230AE", f: "22px", ff:"sans-serif"} 
     };
     const clr = colors[x];
     const box2 = document.querySelector(".box2");
