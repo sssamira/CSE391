@@ -4,30 +4,30 @@ function calculate(){
     const x = [];
     const z = [];
     var s = 0;
-    console.log(z);
     for(const i of y){
-        var k = parseFloat(i.trim());
-        if(!isNaN(k)){
-            x.push(k);
-            s=s+k;}
-        
-        z.push(i); 
+        var k = i.trim();
+        z.push(i);
+        if(!isNaN(k) && k !=""){
+            const p = parseFloat(k);
+            x.push(p);
+            s=s+p;} 
     }
-
-    if (x.length!=0){
-        var max = maxi(x);
-        var min = mini(x);
-        var su = sum(s);
-        var av = avg(x,s);
+    var max, min, su,av, re;
+    if (x.length>0){
+        max = maxi(x);
+        min = mini(x);
+        su = sum(s);
+        av = avg(x,s);
+        re = rev(z);
         
     }
     else{
-        var max = maxi(0);
-        var min = mini(0);
-        var su = sum(0);
-        var av = avg(1,0);
+        max = maxi(0);
+        min = mini(0);
+        su = sum(0);
+        av = avg(1,0);
+        re = rev(z);
     }
-    var re = rev(z);
     
     document.getElementById("max").textContent = "Max: " + max;
     document.getElementById("min").textContent = "Min: " + min;
