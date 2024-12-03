@@ -50,13 +50,16 @@ function convert(){
     const w = parseFloat(document.getElementById("val").value);
     const choice = document.getElementById("choice").value;
 
-    if (choice === "ktl"){
+    if (choice === "ktl" && !isNaN(w)){
         var res = w*0.4536;
         document.getElementById("result").textContent = `${res.toFixed(4)} pounds`;
     } 
-    else if (choice === "ltk"){
+    else if (choice === "ltk" && !isNaN(w)){
         var res = w*2.2046;
         document.getElementById("result").textContent =`${res.toFixed(4)} kilograms`;
+    }
+    else if(isNaN(w)) {
+        document.getElementById("result").textContent =`Invalid Input`;
     }
 }
 
