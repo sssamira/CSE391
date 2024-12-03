@@ -21,6 +21,12 @@ function calculate(){
         var av = avg(x,s);
         
     }
+    else{
+        var max = maxi(0);
+        var min = mini(0);
+        var su = sum(0);
+        var av = avg(1,0);
+    }
     var re = rev(z);
     
     document.getElementById("max").textContent = "Max: " + max;
