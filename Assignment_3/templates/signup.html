@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">LOGO</div>
+        <div class="navitem">
+            <a href="login.html">LogIn</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </nav>
+    <div class="box">
+        <div class="login">
+            <form action="submit">
+                <div class="Email">
+                    <label>Email</label>
+                    <input type="email" class="form-inp" name="email" placeholder="example@gmail.com">
+                </div>
+                <div class="Name">
+                    <label>Name</label>
+                    <input type="text" class="form-inp" name="name" placeholder="Name">
+                </div>
+                <div class="dob">
+                    <label>Date of Birth</label>
+                    <input type="date" class="form-inp" name="dob">
+                </div>
+                <div class="phone">
+                    <label>Phone</label>
+                    <input type="phone-number" class="form-inp" name="phn" placeholder="+880">
+                </div>
+                <div class="pass">
+                    <label>Password</label>
+                    <input type="password" class="form-inp" name = "password" placeholder="Password">
+                </div>
+                <div class="log-in">
+                    <button class="btn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</body>
+</html>

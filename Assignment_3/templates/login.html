@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
+</head>
+<body>
+  <nav>
+    <div class="logo">LOGO</div>
+    <div class="navitem">
+        <a href="login.html">LogIn</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+</nav>
+    <div class="box">
+        <div class="login">
+            <form clas="login-form" action="submit">
+                <div class="email">
+                    <input type="email" class="form-inp" name="email" placeholder="example@gmail.com">
+                </div>
+                <div class="pass">
+                    <input type="password" class="form-inp" name = "password" placeholder="Password">
+                </div>
+                <div class="log-in">
+                    <button class="btn">Log In</button>
+                </div>
+                <div id="emailHelp" class="form-text">If you do not have any account <br> Sign Up from here</div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
