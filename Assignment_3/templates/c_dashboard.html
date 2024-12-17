@@ -10,7 +10,9 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand">Navbar</a>
-          <a class="nav-link p-1">Log Out</a>
+          <form action="/logout" method="POST">
+            <button class="nav-link p-1 btn btn-outline-secondary">Log Out</button>
+          </form>
         </div>
     </nav>
     <div class="front p-5 vh-100 d-flex flex-column justify-content-center align-items-center text-center">
@@ -20,12 +22,13 @@
             click here
         </p>
         <div class="btn-group" style="width: fit-content; border: 1px solid #dee2e6;">
-            <a href="#" class="btn btn-primary">Make appointment</a>
-            <a href="#" class="btn btn-primary">Appointment history</a>
+            <a href="#make_appointment" class="btn btn-primary">Make appointment</a>
+            <a href="#appointment_history" class="btn btn-primary">Appointment history</a>
         </div>
     </div>
     
-     <div class="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
+    <section id="make_appointment" class="make_appointment">
+      <div class="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
         <div class="card p-3">
             <h1>Appointment Form</h1>
             <form class="row g-3" action="/apointment" method="POST">
@@ -42,21 +45,12 @@
                   <input type="date" class="form-control form-control-sm" id="day" name="app_day">
                 </div>
                 <div class="col-12">
-                <select id="tech" class="form-select" name="tech">
-                  <option selected>Choose...</option>
-                  <option value="1">Samira</option>
-                  <option value="2">Samir</option>
-                  <option value="3">Sami</option>
-                  <option value="4">Sam</option>
-                  <option value="5">Sa</option>
-                </select>
-                </div>
-                <div class="col-12">
                     <button type="submit" class="btn btn-outline-primary">Submit</button>
                 </div>
             </form>
         </div>
      </div>
+     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
