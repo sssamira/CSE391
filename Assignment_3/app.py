@@ -28,9 +28,8 @@ def login():
             if get_role(session['i']):
                 return redirect(url_for('admin'))
             return render_template('c_dashboard.html')
-        
         else:
-            return "rejected"
+            return render_template('login.html', error="Wrong email or password!")
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -48,7 +47,10 @@ def signup():
         password = request.form['password']
         phone = request.form['phone']
         is_success = add_client(email, name, address, password, phone)
-        return is_success[1]
+        if is_success[0]:
+            return redirect(url_for('login', success="User registered!"))
+        else:
+            return render_template('signup.html', error=is_success[1])
     
 @app.route('/apointment', methods=['GET', 'POST'])
 def appoint():
@@ -84,7 +86,10 @@ def admin():
         tech = request.form['tech']
         app_day = request.form['app_day']
         is_success = change_appointment(id, tech, app_day)
-        return is_success[1]
+        if is_success[0]:
+            return redirect(url_for('admin', success="Appointment Changed Successfully!"))
+        else:
+            return redirect(url_for('admin', error=is_success[1]))
 
 @app.route('/book' , methods=['GET', 'POST'])
 def book():
@@ -100,6 +105,6 @@ def book():
 @app.route('/logout')
 def logout():
     session.pop('i', None)
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 app.run()

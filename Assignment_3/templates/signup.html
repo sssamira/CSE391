@@ -60,7 +60,18 @@
                     <input type="date" class="form-control form-control-sm" id="dob" name="dob" placeholder="dd/mm/yyyy">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+                    <button type="submit" class="btn btn-outline-primary" onclick="return validatePasswords()">Sign Up</button>
+                    <script>
+                        function validatePasswords() {
+                            var password = document.getElementById('inputPassword4').value;
+                            var confirmPassword = document.getElementById('cinputPassword4').value;
+                            if (password !== confirmPassword) {
+                                alert('Passwords do not match.');
+                                return false;
+                            }
+                            return true;
+                        }
+                    </script>
                 </div>
             </form>
         </div>
