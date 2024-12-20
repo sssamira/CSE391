@@ -12,13 +12,15 @@ def home():
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
+
 def login():
+    error = request.args.get('error')
+    if 'i' in session:
+        if get_role(session['i']):
+            return redirect(url_for('admin'))
+        return render_template('c_dashboard.html')
     if request.method == 'GET':
-        if 'i' in session:
-            if get_role(session['i']):
-                return redirect(url_for('admin'))
-            return render_template('c_dashboard.html')
-        return render_template('login.html')
+        return render_template('login.html', error=error)
     elif request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -68,6 +70,8 @@ def appoint():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'GET':
+        if 'i' not in session:
+            return redirect(url_for('login', error="Please Log In First"))
         if get_role(session['i']):   
             appointment = get_all_appointments()
             total = all_mechanics()
@@ -102,9 +106,11 @@ def book():
         is_success = make_appointment(client_id, license, engine, tech, app_day)
         return is_success[1]  
         
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('i', None)
     return redirect(url_for('login'))
+
+
 
 app.run()

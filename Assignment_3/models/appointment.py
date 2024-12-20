@@ -29,7 +29,7 @@ def free_slots(day, mechanic_id):
 
 def change_appointment(id, tech, day):
     data = free_slots(day, tech)
-    if data[0][0] >= 4:
+    if data[0][0]>= 4:
         return False, "Technician not available"
     query = f"""UPDATE appointments SET mechanic_id = '{tech}', appointment_date = '{day}' WHERE id = '{id}'"""
     execute_a_query(query)
