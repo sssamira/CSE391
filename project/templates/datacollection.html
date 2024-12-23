@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign Up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="dietPreference" class="form-label">Diet Preference</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="vegan" value="vegan">
+        <label class="form-check-label" for="vegan">Vegan</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="vegetarian" value="vegetarian">
+        <label class="form-check-label" for="vegetarian">Vegetarian</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="nonVegetarian" value="nonVegetarian">
+        <label class="form-check-label" for="nonVegetarian">Non-Vegetarian</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="dietPreference" class="form-label">Do you have any dietary restrictions?</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="restriction" value="restriction" name="dietRestriction">
+        <label class="form-check-label" for="restriction">yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="norestriction" value="norestriction" name="dietRestriction">
+        <label class="form-check-label" for="norestriction">no</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="dietPreference" class="form-label">Gender</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="restriction" value="male" name="gender">
+        <label class="form-check-label" for="male">yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="norestriction" value="norestriction" name="dietRestriction">
+        <label class="form-check-label" for="norestriction">no</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="weightUnit" class="form-label">Weight Unit</label>
+      <select class="form-select" id="weightUnit">
+        <option value="kg">Kg</option>
+        <option value="lb">Lb</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="weight" class="form-label">Current Weight</label>
+      <input type="number" class="form-control" id="currentweight" placeholder="Enter your weight" min="0">
+    </div>
+
+    <div class="mb-3">
+      <label for="weight" class="form-label">Target Weight</label>
+      <input type="number" class="form-control" id="targetweight" placeholder="Enter your target weight" min="0">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
