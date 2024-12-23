@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign in</title>
+    <title>Data Collection</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
   <body>
@@ -29,25 +29,25 @@
         </div>
       </nav>
 <div class="container">
-  <form>
+  <form  action="/datacollection" method="POST">
     <div class="mb-3">
       <label for="dietPreference" class="form-label">Diet Preference</label><br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="vegan" value="vegan">
+        <input class="form-check-input" type="checkbox" id="vegan" value="vegan" name="dietPreference">
         <label class="form-check-label" for="vegan">Vegan</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="vegetarian" value="vegetarian">
+        <input class="form-check-input" type="checkbox" id="vegetarian" value="vegetarian" name="dietPreference">
         <label class="form-check-label" for="vegetarian">Vegetarian</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="nonVegetarian" value="nonVegetarian">
+        <input class="form-check-input" type="checkbox" id="nonVegetarian" value="nonVegetarian" name="dietPreference">
         <label class="form-check-label" for="nonVegetarian">Non-Vegetarian</label>
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="dietPreference" class="form-label">Do you have any dietary restrictions?</label><br>
+      <label for="dietRestriction" class="form-label">Do you have any dietary restrictions?</label><br>
       <div class="form-check">
         <input class="form-check-input" type="radio" id="restriction" value="restriction" name="dietRestriction">
         <label class="form-check-label" for="restriction">yes</label>
@@ -58,34 +58,87 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="dietPreference" class="form-label">Gender</label><br>
+      <label for="gender" class="form-label">Gender</label><br>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="restriction" value="male" name="gender">
-        <label class="form-check-label" for="male">yes</label>
+        <input class="form-check-input" type="radio" id="male" value="male" name="gender">
+        <label class="form-check-label" for="male">Male</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="norestriction" value="norestriction" name="dietRestriction">
-        <label class="form-check-label" for="norestriction">no</label>
+        <input class="form-check-input" type="radio" id="female" value="female" name="gender">
+        <label class="form-check-label" for="female">Female</label>
       </div>
     </div>
     <div class="mb-3">
       <label for="weightUnit" class="form-label">Weight Unit</label>
-      <select class="form-select" id="weightUnit">
+      <select class="form-select" id="weightUnit" name="weightUnit">
         <option value="kg">Kg</option>
         <option value="lb">Lb</option>
       </select>
     </div>
-
+    
     <div class="mb-3">
-      <label for="weight" class="form-label">Current Weight</label>
-      <input type="number" class="form-control" id="currentweight" placeholder="Enter your weight" min="0">
+      <label for="currentweight" class="form-label">Current Weight</label>
+      <input type="number" class="form-control" id="currentweight" placeholder="Enter your weight" min="0" name="currentweight">
     </div>
 
     <div class="mb-3">
-      <label for="weight" class="form-label">Target Weight</label>
-      <input type="number" class="form-control" id="targetweight" placeholder="Enter your target weight" min="0">
+      <label for="targetweight" class="form-label">Target Weight</label>
+      <input type="number" class="form-control" id="targetweight" placeholder="Enter your target weight" min="0" name="targetweight">
     </div>
-
+    <div class="mb-3">
+      <label for="heightUnit" class="form-label">Height Unit</label>
+      <select class="form-select" id="heightUnit" name="heightUnit">
+        <option value="cm">cm</option>
+        <option value="in">in</option>
+      </select>
+    </div>
+    
+    <div class="mb-3">
+      <label for="height" class="form-label">Height</label>
+      <input type="number" class="form-control" id="height" placeholder="Enter your height" min="0" name="height">
+    </div>
+    <div class="mb-3">
+      <label for="exerciseHours" class="form-label">How many hours a day do you want to exercise</label>
+      <input type="number" class="form-control" id="exerciseHours" placeholder="Enter your target exercise hours" min="0" name="exerciseHours">
+    </div>
+    <div class="mb-3">
+      <label for="activityLevel" class="form-label">How active are you?</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="sedentary" value="sedentary" name="activityLevel">
+        <label class="form-check-label" for="sedentary">Do not exercise</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="lightlyActive" value="lightlyActive" name="activityLevel">
+        <label class="form-check-label" for="lightlyActive">Lightly Active (2-3 times a week)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="moderatelyActive" value="moderatelyActive" name="activityLevel">
+        <label class="form-check-label" for="moderatelyActive">Moderately Active (3-5 times a week)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="veryActive" value="veryActive" name="activityLevel">
+        <label class="form-check-label" for="veryActive">Very Active (6-7 times a week)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="extremelyActive" value="extremelyActive" name="activityLevel">
+        <label class="form-check-label" for="extremelyActive">Extremely Active (8+ times a week)</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="allergies" class="form-label">Do you have any alerrgic reactions?</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="hasAllergies" value="hasAllergies" name="allergies">
+        <label class="form-check-label" for="hasAllergies">yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="noAllergies" value="noAllergies" name="allergies">
+        <label class="form-check-label" for="noAllergies">no</label>
+      </div>
+      <div class="mb-3">
+        <label for="allergies" class="form-label">Enter the food that you are allergic to</label>
+        <input type="text" class="form-control" id="allergies" placeholder="Peanuts, eggs etc" name="allergies">
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
