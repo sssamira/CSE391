@@ -10,32 +10,20 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 
 def login():
-    error = request.args.get('error')
-    if 'i' in session:
-        if get_role(session['i']):
-            return redirect(url_for('admin'))
-        return render_template('c_dashboard.html')
     if request.method == 'GET':
-        return render_template('login.html', error=error)
+        return render_template('login.html')
     elif request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         is_success = authn(email, password)
         if is_success:
-            session['i'] = get_userid(email)[0][0]
-            if get_role(session['i']):
-                return redirect(url_for('admin'))
-            return render_template('c_dashboard.html')
+            return render_template('userdashboard.html')
         else:
             return render_template('login.html', error="Wrong email or password!")
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        if 'i' in session:
-            if get_role(session['i']):
-                return redirect(url_for('admin'))
-            return render_template('c_dashboard.html')
         return render_template('signup.html')
     elif request.method == 'POST':
         email = request.form['email']
