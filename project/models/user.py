@@ -82,11 +82,10 @@ def get_BMR(weight, height, dob, gender):
     birth_year, birth_month, birth_day = int(dob[:4]), int(dob[5:7]), int(dob[8:])
     today = date.today()
     age = today.year - birth_year - ((today.month, today.day) < (birth_month, birth_day))
-    height_cm = height * 100
     if gender == "male":
-        bmr = 88.362 + (13.397 * weight) + (4.799 * height_cm *100) - (5.677 * age)
+        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
     else:
-        bmr = 447.593 + (9.247 * weight) + (3.098 * height_cm* 100) - (4.330 * age) 
+        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age) 
     return round(bmr,2)
 
 def get_userid(email):
