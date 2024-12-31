@@ -67,16 +67,17 @@ def get_info(email):
     return (user, bmi, bmi_category, bmr)
 
 def get_BMI(weight, height):
-    bmi = round(weight / (height**2), 2)
+    height = height / 100
+    bmi = weight / (height**2)
     if bmi<=18.5:
-        bmi_category = "Underweight! You should eat healthy to gain healthy weight!"
+        bmi_category = "Underweight!! You should eat healthy to gain healthy weight!"
     elif bmi<=24.9:
         bmi_category = "Healthy Weight! keep it up!"
     elif bmi<=29.9:
         bmi_category = "Overweight! You should eat healthy to lose healthy weight!"
     else:
         bmi_category = "Obese! For more health diagnosis, visit nutritionist!"
-    return bmi, bmi_category
+    return round(bmi, 2), bmi_category
 def get_BMR(weight, height, dob, gender):
     birth_year, birth_month, birth_day = int(dob[:4]), int(dob[5:7]), int(dob[8:])
     today = date.today()
