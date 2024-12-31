@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Stopwatch{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Stopwatch</h5>
+                    <p class="card-text">
+                        <span id="time">00:00:00</span>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary" id="start">Start</button>
+                        <button type="button" class="btn btn-secondary" id="stop" disabled>Stop</button>
+                        <button type="button" class="btn btn-info" id="pause" disabled>Pause</button>
+                    </div>
+                    <button type="button" class="btn btn-success mt-3" id="record">Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

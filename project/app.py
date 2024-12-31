@@ -1,6 +1,8 @@
-from flask import Flask, request, render_template, session, redirect, url_for
-
+from flask import Flask, request, render_template, session, redirect, url_for,jsonify
+import requests
 from models.user import *
+from models.reminder import *
+from models.quote import *
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "blablabla"
@@ -19,15 +21,16 @@ def login():
         password = request.form['password']
         is_success = authn(email, password)
         if is_success:
-            session[email] = email
-            data = get_info(email)
-            return render_template('userdashboard.html', user=data[0], bmi=data[1], bmr=data[2])
+            session['user_email'] = email
+            return redirect('/userdashboard')
         else:
             return render_template('login.html', error="Wrong email or password!")
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
+        if 'user_email' in session:
+            return redirect(url_for('userdashboard'))
         return render_template('signup.html')
     elif request.method == 'POST':
         email = request.form['email']
@@ -68,8 +71,80 @@ def datacollection():
 def userdashboard():
     if request.method == 'GET':
         if 'user_email' not in session:
-            return redirect(url_for('login'))
+            return redirect(url_for('login', error= "Please login first!"))
+        email = session['user_email']
+        data = get_info(email)
+        return render_template('userdashboard.html', user=data[0], bmi=data[1], bmi_category=data[2], bmr=data[3])
         
+
+@app.route('/reminder', methods=['GET', 'POST'])
+def reminders():
+    if request.method == 'GET':
+        if 'user_email' not in session:
+            return redirect(url_for('login'))
+        rem = get_reminders(session['user_email'])
+        return render_template('reminder.html', reminders=rem)
+    elif request.method == 'POST':
+        email = session['user_email']
+        reminder_name = request.form['name']
+        due_date = request.form['due_date']
+        due_time = request.form['due_time']
+        # reminder_date = request.form['time']
+        # reminder_time = request.form['time']
+        is_success = add_reminder(email, reminder_name, due_date, due_time)
+        if is_success:
+            return redirect(url_for('reminder'))
+        else:
+            return redirect(url_for('reminder'))
+
+@app.route('/editreminder', methods=['POST'])
+def editreminder():
+    if request.method == 'POST':
+        id = request.form['edit_id']
+        name = request.form['editname']
+        date = request.form['edit_due_date']
+        time = request.form['edit_due_time']
+        is_success = edit_reminder(id, name, date, time)
+        if is_success:
+            return redirect(url_for('reminder'))
+        else:
+            return  redirect(url_for('reminder'))
+
+
+
+@app.route('/exercise', methods=['GET'])
+def exercise():
+    return render_template('exercise1.html')
+@app.route('/meal', methods=['GET'])
+def food():
+    return render_template('food1.html')
+
+# @app.route('/personalized-exercise', methods=['GET'])
+# def personalized_exercise():
+#     return render_template('quote.html')
+
+@app.route('/arm-exercise', methods=['GET'])
+def arm_exercise():
+    bodypart = ["shoulders", "upper arms","lower arms"]
+    return render_template('arm-exercise.html')
+@app.route('/leg-exercise', methods=['GET'])
+def leg_exercise():
+    bodypart = ["lower legs", "upper legs"]
+    return render_template('leg-exercise.html')
+
+@app.route('/abdominal-exercise', methods=['GET'])
+def abdominal_exercise():
+    bodypart = ["chest","back","waist"]
+    return render_template('abdominal-exercise.html')
+
+@app.route('/cardio', methods=['GET'])
+def cardio():
+    bodypart = ["cardio"]
+    return render_template('cardio.html')
+@app.route('/extra', methods=['GET'])
+def extra():
+    bodypart = ["neck", ]
+    return render_template('extra.html')
 
 
 @app.route('/logout' , methods=['GET', 'POST'])

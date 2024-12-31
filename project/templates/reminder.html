@@ -1,15 +1,12 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reminders</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
     <div class="container mt-5">
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reminderModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reminderModal" onclick="getValues()">
                 <span>&#43;</span>
             </button>
         </div>
@@ -19,19 +16,23 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col" hidden>Reminder ID</th>
                             <th scope="col">Reminder</th>
                             <th scope="col">Due Date</th>
-                            <th scope="col">Due Time</th>
+                            <th scope="col">Time</th>
                             <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for reminder in reminders %}
-                        <tr>
-                            <td>{{ reminder.name }}</td>
-                            <td>{{ reminder.due_date }}</td>
-                            <td>{{ reminder.due_time }}</td>
-                            <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal{{ reminder.id }}">Edit</button></td>
+                        {% for i in reminders %}
+                        <tr id="reminder-row">
+                            <td class="reminder-id" hidden>{{ i.appointment_id }}</td>
+                            <td class="reminder-name">{{ i.appointment_name }}</td>
+                            <td class="reminder-date">{{ i.date }}</td>
+                            <td class="reminder-time">{{ i.time }}</td>
+                            <td>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRminder(this)">Edit</button>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -41,29 +42,29 @@
                 {% endif %}
             </div>
         </div>
-
         <!-- Reminder Modal -->
         <div class="modal fade" id="reminderModal" tabindex="-1" aria-labelledby="reminderModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="reminderModalLabel">Add Reminder</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                     </div>
                     <div class="modal-body">
-                        <form id="reminderForm">
+                        <form id="reminderForm" action="/reminder" method="POST">
                             <div class="mb-3">
                                 <label for="reminderName" class="form-label">Reminder Name</label>
-                                <input type="text" class="form-control" id="reminderName" required>
+                                <input type="text" class="form-control" id="reminderName" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reminderDate" class="form-label">Date</label>
-                                <input type="date" class="form-control" id="reminderDate" required>
+                                <input type="date" class="form-control" id="reminderDate" name= "due_date" onclick="disablePastDates(this)" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reminderTime" class="form-label">Time</label>
-                                <input type="time" class="form-control" id="reminderTime" required>
+                                <input type="time" class="form-control" id="reminderTime" name="due_time" required>
                             </div>
+                            
                             <button type="submit" class="btn btn-primary">Save Reminder</button>
                         </form>
                     </div>
@@ -71,22 +72,85 @@
             </div>
         </div>
     </div>
+    <!-- Edit Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Reminder</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editreminder" action="/editreminder" method="POST">
+                            <div class="mb-3" hidden>
+                                <label for="editReminderId" class="form-label" hidden>Reminder ID</label>
+                                <input type="text" class="form-control" id="editReminderId" name="edit_id" hidden>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editReminderName" class="form-label">Reminder Name</label>
+                                <input type="text" class="form-control" id="editReminderName" name="editname" >
+                            </div>
+                            <div class="mb-3">
+                                <label for="editReminderDate" class="form-label">Due Date</label>
+                                <input type="date" class="form-control" id="editReminderDate" name="edit_due_date" onclick="disablePastDates(this)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editReminderTime" class="form-label">Due Time</label>
+                                <input type="time" class="form-control" id="editReminderTime" name="edit_due_time" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
     <script>
-        document.getElementById('reminderForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('reminderName').value;
-            const date = document.getElementById('reminderDate').value;
-            const time = document.getElementById('reminderTime').value;
+        function getValues() {
+            const nameInput = document.getElementById('reminderName').value;
+            const dateInput = document.getElementById('reminderDate').value;
+            const timeInput = document.getElementById('reminderTime').value;
 
-            const remindersDiv = document.getElementById('reminders');
-            remindersDiv.innerHTML += `<p>${name} - ${date} ${time}</p>`;
-            document.getElementById('reminderForm').reset();
-            var reminderModal = bootstrap.Modal.getInstance(document.getElementById('reminderModal'));
-            reminderModal.hide();
-        });
+            const table = document.getElementById('reminders');
+            const newRow = table.insertRow(-1);
+            const newCell1 = newRow.insertCell(0);
+            const newCell2 = newRow.insertCell(1);
+            const newCell3 = newRow.insertCell(2);
+            const newCell4 = newRow.insertCell(3);
+
+            newCell1.textContent = nameInput;
+            newCell2.textContent = dateInput;
+            newCell3.textContent = timeInput;
+            newCell4.innerHTML = `<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal"onclick="editRminder(this)">Edit</button>`
+        }                        
+
+        function editRminder(button) {
+            var row = button.closest('tr');
+            var requestId = row.cells[0].innerText.trim();
+            var requestName = row.cells[1].innerText.trim();
+            var requestDate = row.cells[2].innerText.trim();
+            var requestTime = row.cells[3].innerText.trim();
+
+
+            document.getElementById('editReminderId').value = requestId;
+            document.getElementById('editReminderName').value = requestName;
+            document.getElementById('editReminderDate').value = requestDate;
+            document.getElementById('editReminderTime').value = requestTime;
+
+
+            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        }
+        function disablePastDates(dateInput) {
+        var today = new Date().toISOString().split('T')[0];
+        var date = new Date(dateInput.value);
+        var minDate = (date < new Date(today)) ? today : dateInput.value;
+        dateInput.min = minDate;
+        }
+        
     </script>
-</body>
-</html>
 
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Leg Exercise{% endblock %}
+
+{% block content %}
+
+<div class="car p-5">
+  <div id="exercise-cards"></div>
+</div>
+
+<script>
+  async function fetchExercises() {
+    const link = 'http://exercisedb-api.vercel.app/api/v1/bodyparts/upper%20legs/exercises?offset=0&limit=50';
+
+    try {
+      const response = await fetch(link);
+      const data = await response.json();
+
+      if (!data || !data.data || !data.data.exercises || data.data.exercises.length === 0) {
+        const exerciseCardsContainer = document.getElementById('exercise-cards');
+        exerciseCardsContainer.innerHTML = '<p>No exercise data found.</p>';
+        return;
+      }
+
+      const exerciseCardsContainer = document.getElementById('exercise-cards');
+      data.data.exercises.forEach(exercise => {
+        const card = document.createElement('div');
+
+        if (exercise['gifUrl']) {
+          const image = document.createElement('img');
+          image.src = exercise['gifUrl'];
+          image.alt = exercise['name'];
+          image.width = 200;
+          image.height = 200;
+          card.appendChild(image);
+        }
+
+        const name = document.createElement('h3');
+        name.textContent = exercise['name'];
+        card.appendChild(name);
+
+        const steps = document.createElement('h4');
+        steps.textContent = 'Steps:';
+        card.appendChild(steps);
+
+        const instructionsList = document.createElement('ul');
+        if (exercise["instructions"] && exercise["instructions"].length > 0) {
+          exercise["instructions"].forEach(step => {
+            const instructionItem = document.createElement('li');
+            instructionItem.textContent = step;
+            instructionsList.appendChild(instructionItem);
+          });
+        } else {
+          instructionsList.innerHTML = '<li>No instructions available.</li>';
+        }
+
+        card.appendChild(instructionsList);
+
+        const hr = document.createElement('hr');
+        card.appendChild(hr);
+
+        exerciseCardsContainer.appendChild(card);
+      });
+
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+      const exerciseCardsContainer = document.getElementById('exercise-cards');
+      exerciseCardsContainer.innerHTML = '<p>Error fetching exercises.</p>';
+    }
+  }
+
+  fetchExercises();
+</script>
+
+{% endblock %}

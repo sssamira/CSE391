@@ -62,12 +62,21 @@ def authn(email, p):
 def get_info(email):
     session = get_session()
     user = session.query(Person).filter(Person.email == email).first()
-    bmi = get_BMI(user.current_weight, user.height)
+    bmi, bmi_category = get_BMI(user.current_weight, user.height)
     bmr = get_BMR(user.current_weight, user.height, user.dob, user.gender)
-    return (user, bmi, bmr)
+    return (user, bmi, bmi_category, bmr)
 
 def get_BMI(weight, height):
-    return weight / (height**2)
+    bmi = round(weight / (height**2), 2)
+    if bmi<=18.5:
+        bmi_category = "Underweight! You should eat healthy to gain healthy weight!"
+    elif bmi<=24.9:
+        bmi_category = "Healthy Weight! keep it up!"
+    elif bmi<=29.9:
+        bmi_category = "Overweight! You should eat healthy to lose healthy weight!"
+    else:
+        bmi_category = "Obese! For more health diagnosis, visit nutritionist!"
+    return bmi, bmi_category
 def get_BMR(weight, height, dob, gender):
     birth_year, birth_month, birth_day = int(dob[:4]), int(dob[5:7]), int(dob[8:])
     today = date.today()
@@ -77,8 +86,12 @@ def get_BMR(weight, height, dob, gender):
         bmr = 88.362 + (13.397 * weight) + (4.799 * height_cm *100) - (5.677 * age)
     else:
         bmr = 447.593 + (9.247 * weight) + (3.098 * height_cm* 100) - (4.330 * age) 
-    return bmr
+    return round(bmr,2)
 
+def get_userid(email):
+    session = get_session()
+    user = session.query(Person).filter(Person.email == email).first()
+    return user.uid
 
     
 
