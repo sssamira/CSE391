@@ -78,7 +78,7 @@ def userdashboard():
         
 
 @app.route('/reminder', methods=['GET', 'POST'])
-def reminders():
+def reminder():
     if request.method == 'GET':
         if 'user_email' not in session:
             return redirect(url_for('login'))
