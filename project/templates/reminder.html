@@ -106,7 +106,9 @@
             </div>
         </div>
 
-
+        <form action="/sendemail" method="POST">
+            <button type="submit" class="btn btn-primary mb-5">Click me</button>
+        </form>
     
     <script>
         function getValues() {
@@ -150,7 +152,6 @@
         var minDate = (date < new Date(today)) ? today : dateInput.value;
         dateInput.min = minDate;
         }
-        
     </script>
 
 {% endblock %}

@@ -2,10 +2,23 @@ from flask import Flask, request, render_template, session, redirect, url_for,js
 import requests
 from models.user import *
 from models.reminder import *
-from models.quote import *
+from models.exercise import *
+from flask_mailman import Mail, EmailMessage
+from models.sceduler import sched
+from datetime import datetime
+from models.email import sendemail 
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "blablabla"
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'shinzzzo123@gmail.com'
+app.config['MAIL_PASSWORD'] = 'hjso bcdl odek hfbm'
+mail = Mail()
+mail.init_app(app)
+
 
 @app.route('/')
 def home():
@@ -28,6 +41,7 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    error = request.args.get('error')
     if request.method == 'GET':
         if 'user_email' in session:
             return redirect(url_for('userdashboard'))
@@ -49,6 +63,7 @@ def signup():
 
 @app.route('/datacollection', methods=['GET', 'POST'])
 def datacollection():
+    error = request.args.get('error')
     if request.method == 'GET':
         if 'user_email' not in session:
             return redirect(url_for('signup'))
@@ -89,13 +104,16 @@ def reminders():
         reminder_name = request.form['name']
         due_date = request.form['due_date']
         due_time = request.form['due_time']
-        # reminder_date = request.form['time']
-        # reminder_time = request.form['time']
+        future_datetime = datetime.strptime(due_date + " " + due_time, "%Y-%m-%d %H:%M")
+        job_time = future_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+        sched.add_job(sendemail, 'date', run_date=future_datetime, args=[reminder_name, email])
         is_success = add_reminder(email, reminder_name, due_date, due_time)
         if is_success:
             return redirect(url_for('reminder'))
         else:
             return redirect(url_for('reminder'))
+
+
 
 @app.route('/editreminder', methods=['POST'])
 def editreminder():
@@ -125,8 +143,10 @@ def food():
 
 @app.route('/arm-exercise', methods=['GET'])
 def arm_exercise():
-    bodypart = ["shoulders", "upper arms","lower arms"]
+    result = get_exerciseby_typ("arms")
     return render_template('arm-exercise.html')
+
+
 @app.route('/leg-exercise', methods=['GET'])
 def leg_exercise():
     bodypart = ["lower legs", "upper legs"]
@@ -143,8 +163,15 @@ def cardio():
     return render_template('cardio.html')
 @app.route('/extra', methods=['GET'])
 def extra():
-    bodypart = ["neck", ]
+    bodypart = ["neck" ]
     return render_template('extra.html')
+
+
+
+
+
+    
+
 
 
 @app.route('/logout' , methods=['GET', 'POST'])

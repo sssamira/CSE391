@@ -27,7 +27,14 @@
             </ul>
           </div>
         </div>
-      </nav>
+    </nav>
+    {% if success %}
+        <div class="container">
+          <div class="alert alert-danger" role="alert">
+            {{ success }}
+          </div>
+        </div>
+      {% endif %}
 <div class="container">
   <form  action="/datacollection" method="POST">
     <div class="mb-3">

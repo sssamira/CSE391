@@ -1,75 +1,86 @@
 {% extends "base.html" %}
 
-{% block title %}Leg Exercise{% endblock %}
+{% block title %}Arm Exercises{% endblock %}
 
 {% block content %}
-
-<div class="car p-5">
-  <div id="exercise-cards"></div>
+<div class="container p-5">
+  <h1>Arm Exercises</h1>
+  <div id="exercise-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
 </div>
 
 <script>
   async function fetchExercises() {
-    const link = 'http://exercisedb-api.vercel.app/api/v1/bodyparts/upper%20legs/exercises?offset=0&limit=50';
+    const url = 'https://exercisedb.p.rapidapi.com/exercises/equipment/body%20weight?limit=150&offset=50';
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': '207464354emsh3f79d7c714b6947p1c593ejsn679905fdd856',
+        'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
+      }
+    };
 
     try {
-      const response = await fetch(link);
-      const data = await response.json();
-
-      if (!data || !data.data || !data.data.exercises || data.data.exercises.length === 0) {
-        const exerciseCardsContainer = document.getElementById('exercise-cards');
-        exerciseCardsContainer.innerHTML = '<p>No exercise data found.</p>';
-        return;
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const exerciseCardsContainer = document.getElementById('exercise-cards');
-      data.data.exercises.forEach(exercise => {
-        const card = document.createElement('div');
+      const result = await response.json();
+      const exerciseList = document.getElementById('exercise-list');
 
-        if (exercise['gifUrl']) {
-          const image = document.createElement('img');
-          image.src = exercise['gifUrl'];
-          image.alt = exercise['name'];
-          image.width = 200;
-          image.height = 200;
-          card.appendChild(image);
+      // Loop through each exercise and filter by bodyPart
+      result.forEach(exercise => {
+        if (exercise.bodyPart === 'upper legs' || exercise.bodyPart === 'lower legs') {
+          // Create a container for each exercise
+          const card = document.createElement('div');
+          card.style.border = '1px solid #ddd';
+          card.style.borderRadius = '8px';
+          card.style.padding = '16px';
+          card.style.width = '300px';
+          card.style.textAlign = 'center';
+
+          // Add exercise GIF
+          if (exercise.gifUrl) {
+            const gif = document.createElement('img');
+            gif.src = exercise.gifUrl;
+            gif.alt = exercise.name;
+            gif.style.width = '100%';
+            gif.style.borderRadius = '8px';
+            card.appendChild(gif);
+          }
+
+          const name = document.createElement('h3');
+          name.textContent = exercise.name;
+          card.appendChild(name);
+
+          const instructionsHeading = document.createElement('h4');
+          instructionsHeading.textContent = 'Instructions:';
+          card.appendChild(instructionsHeading);
+
+          const instructionsList = document.createElement('ul');
+          if (exercise.instructions && exercise.instructions.length > 0) {
+            exercise.instructions.forEach(step => {
+              const listItem = document.createElement('li');
+              listItem.textContent = step;
+              instructionsList.appendChild(listItem);
+            });
+          } else {
+            const noInstructions = document.createElement('li');
+            noInstructions.textContent = 'No instructions available.';
+            instructionsList.appendChild(noInstructions);
+          }
+          card.appendChild(instructionsList);
+
+  
+          exerciseList.appendChild(card);
         }
-
-        const name = document.createElement('h3');
-        name.textContent = exercise['name'];
-        card.appendChild(name);
-
-        const steps = document.createElement('h4');
-        steps.textContent = 'Steps:';
-        card.appendChild(steps);
-
-        const instructionsList = document.createElement('ul');
-        if (exercise["instructions"] && exercise["instructions"].length > 0) {
-          exercise["instructions"].forEach(step => {
-            const instructionItem = document.createElement('li');
-            instructionItem.textContent = step;
-            instructionsList.appendChild(instructionItem);
-          });
-        } else {
-          instructionsList.innerHTML = '<li>No instructions available.</li>';
-        }
-
-        card.appendChild(instructionsList);
-
-        const hr = document.createElement('hr');
-        card.appendChild(hr);
-
-        exerciseCardsContainer.appendChild(card);
       });
-
     } catch (error) {
       console.error('Error fetching exercises:', error);
-      const exerciseCardsContainer = document.getElementById('exercise-cards');
-      exerciseCardsContainer.innerHTML = '<p>Error fetching exercises.</p>';
+      document.getElementById('exercise-list').innerHTML = `<p>Error loading exercises. Please try again later.</p>`;
     }
   }
 
   fetchExercises();
 </script>
-
 {% endblock %}
