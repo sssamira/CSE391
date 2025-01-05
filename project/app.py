@@ -90,6 +90,15 @@ def userdashboard():
         email = session['user_email']
         data = get_info(email)
         return render_template('userdashboard.html', user=data[0], bmi=data[1], bmi_category=data[2], bmr=data[3])
+    
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if request.method == 'GET':
+        if 'user_email' not in session:
+            return redirect(url_for('login'))
+        email = session['user_email']
+        data = get_info(email)
+        return render_template('profile.html', user=data[0], bmi=data[1], bmi_category=data[2], bmr=data[3])
         
 
 @app.route('/reminder', methods=['GET', 'POST'])
@@ -128,6 +137,15 @@ def editreminder():
         else:
             return  redirect(url_for('reminder'))
 
+@app.route('/deletereminder', methods=['POST'])
+def deletereminder():
+    if request.method == 'POST':
+        id = request.form['edit_id']
+        is_success = delete_reminder(id)
+        if is_success:
+            return redirect(url_for('reminder'))
+        else:
+            return  redirect(url_for('reminder'))
 
 
 @app.route('/exercise', methods=['GET'])
