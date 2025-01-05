@@ -99,7 +99,10 @@
                                 <input type="time" class="form-control" id="editReminderTime" name="edit_due_time" >
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                            <form action="/deletereminder" method="POST">
+                                <input type="text" name="delete_id" value="{{edit_id}}" hidden>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </form>
                     </div>
                 </div>

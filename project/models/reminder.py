@@ -48,8 +48,16 @@ def edit_reminder(id, name, date, time):
 
     
 
-def delete_reminder():
-    pass
+def delete_reminder(id):
+    session = get_session()
+    my_reminder = session.query(reminder).filter(reminder.appointment_id == id).first()
+    session.delete(my_reminder)
+    try:
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return False
+    return True
 
 def get_reminders(email):
     session = get_session()
